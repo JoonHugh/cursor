@@ -5,7 +5,19 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port:5001,
-    proxy:5000,
+    port: 5001,
+    proxy: {
+      // Example proxy configuration:
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
-});
+  // Important for Amplify deployment
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true
+  }
+})
