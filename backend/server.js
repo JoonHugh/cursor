@@ -16,37 +16,46 @@ connectDB();
 
 const app = express()
 
+
+
 // Enhanced CORS configuration
-const allowedOrigins = [
-    'https://master.d16q4wlo0s2s1v.amplifyapp.com', // Your frontend
-    'http://localhost:3000',
-];
+// const allowedOrigins = [
+//     'https://master.d16q4wlo0s2s1v.amplifyapp.com', // Your frontend
+//     'http://localhost:3000',
+// ];
 
-const corsOptions = {
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//       // Allow requests with no origin (like mobile apps or curl requests)
+//       if (!origin) return callback(null, true);
       
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.error('CORS blocked for origin:', origin); // Debug
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}
+//       if (allowedOrigins.includes(origin)) {
+//         callback(null, true);
+//       } else {
+//         console.error('CORS blocked for origin:', origin); // Debug
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization']
+// }
 
-app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: 'https://master.d16q4wlo0s2s1v.amplifyapp.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true, // if using cookies or Authorization headers
+}));
+
+// app.use(cors(corsOptions));
 // Debug middleware (add this right after CORS setup)
 app.use((req, res, next) => {
     console.log('Incoming Origin:', req.headers.origin);
     console.log('Request Method:', req.method);
     next();
 });
-// app.options('/*', cors(corsOptions)); // Enable preflight for ALL routes
+// app.options('*', cors()); // Enable preflight for ALL routes
   
 
 app.use(express.json());
