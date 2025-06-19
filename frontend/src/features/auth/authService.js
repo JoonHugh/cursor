@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/users/'
+// const API_URL = 'http://localhost:5000/users/'
+const API_URL = 'https://s3wr2vk90a.execute-api.ap-southeast-2.amazonaws.com/dev';
+
 
 // Register user
 const register = async (userData) => {
-    const response = await axios.post(API_URL, userData);
+    const response = await axios.post(`${API_URL}/`, userData);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
@@ -15,7 +17,7 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-    const response = await axios.post(API_URL + 'login', userData);
+    const response = await axios.post(`${API_URL}/` + 'login', userData);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
@@ -40,7 +42,7 @@ const update = async (userData) => {
         },
     }
 
-    const response = await axios.put(API_URL + 'me', userData, config);
+    const response = await axios.put(`${API_URL}/` + 'me', userData, config);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));

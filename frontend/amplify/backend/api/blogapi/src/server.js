@@ -10,7 +10,7 @@ import uploadRoutes from './routes/imageRoutes.js';
 
 
 const env = dotenv.config();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 connectDB();
 
@@ -18,11 +18,12 @@ const app = express()
 
 // Enhanced CORS configuration
 const allowedOrigins = [
-    'https://master.d16q4wlo0s2s1v.amplifyapp.com', // Your frontend
-    'http://localhost:3000',
-];
+    'http://localhost:5001', // Local development
+    'https://master.d16q4wlo0s2s1v.amplifyapp.com/', // Your Amplify URL
+    'https://www.yourdomain.com' // If using custom domain
+  ];
 
-const corsOptions = {
+  app.use(cors({
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
@@ -30,23 +31,13 @@ const corsOptions = {
       if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        console.error('CORS blocked for origin:', origin); // Debug
         callback(new Error('Not allowed by CORS'));
       }
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
-}
-
-app.use(cors(corsOptions));
-// Debug middleware (add this right after CORS setup)
-app.use((req, res, next) => {
-    console.log('Incoming Origin:', req.headers.origin);
-    console.log('Request Method:', req.method);
-    next();
-});
-// app.options('/*', cors(corsOptions)); // Enable preflight for ALL routes
+  }));
   
 
 app.use(express.json());

@@ -18,6 +18,6 @@ export default defineConfig({
   },
   base: '/',  // Critical for correct paths
   server: {
-    port: 5001
+    port: 3001
   }
 })
