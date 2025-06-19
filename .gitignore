@@ -1,30 +1,26 @@
-# Design files (please do not remove 🙂)
+# Design files
 *.sketch
 *.fig
 *.xd
 
 # Dependencies
 /node_modules
-/
 /.pnp
 .pnp.js
 yarn.debug.log*
 yarn.error.log*
 npm-debug.log*
 
-# Environment and secrets
-.env
+# Environment and secrets (except production)
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local
 
 # Testing
 /coverage
 
-# Production
+# Production (DO NOT IGNORE /dist - Amplify needs this)
 /build
-/dist
 /.next
 /out
 
@@ -40,7 +36,5 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Custom directories
 uploads
-
-node_modules
-.env
