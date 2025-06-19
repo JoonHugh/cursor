@@ -1,7 +1,24 @@
 customHeaders:
+  # Keep your existing JS headers
   - pattern: 'assets/*.js'
     headers:
       - key: Content-Type
         value: application/javascript
       - key: Cache-Control
         value: max-age=31536000,immutable
+
+  # Add these new rules for video files
+  - pattern: '**/*.mp4'
+    headers:
+      - key: Content-Type
+        value: video/mp4
+      - key: Cache-Control
+        value: max-age=31536000,public
+      - key: Access-Control-Allow-Origin
+        value: '*'
+
+  # Add these for general assets
+  - pattern: 'assets/*'
+    headers:
+      - key: Cache-Control
+        value: max-age=31536000,public
