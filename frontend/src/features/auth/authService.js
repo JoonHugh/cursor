@@ -6,7 +6,7 @@ const API_URL = 'https://s3wr2vk90a.execute-api.ap-southeast-2.amazonaws.com/dev
 
 // Register user
 const register = async (userData) => {
-    const response = await axios.post(`${API_URL}/`, userData);
+    const response = await axios.post(`${API_URL}/users`, userData);
 
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
@@ -17,9 +17,9 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-    const response = await axios.post(`${API_URL}/` + 'login', userData);
+    const response = await axios.post(`${API_URL}/users/login`, userData);
 
-    if (response.data) {
+    if (response.status === 200 && response.data.token) {
         localStorage.setItem('user', JSON.stringify(response.data))
     } // if
 

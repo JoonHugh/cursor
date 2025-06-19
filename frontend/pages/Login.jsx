@@ -56,8 +56,10 @@ function Login() {
     } // if 
 
     // if (isSuccess || user) {
-    if (isSuccess) {
+    if (isSuccess && user?.token) {
       navigate('/')
+    } else {
+      toast.error("Login failed - Invalid user");
     } // if
 
     dispatch(reset());
