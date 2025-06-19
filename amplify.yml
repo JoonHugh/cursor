@@ -4,11 +4,11 @@ frontend:
     preBuild:
       commands:
         - echo "Installing in $(pwd)"
-        - (cd frontend && npm install --force)
+        - (cd frontend && yarn install)
     build:
       commands:
         - echo "Building in $(pwd)"
-        - (cd frontend && npm run build)
+        - (cd frontend && yarn build)
   artifacts:
     baseDirectory: frontend/dist
     files:
