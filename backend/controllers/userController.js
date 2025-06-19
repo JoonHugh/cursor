@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
 
-const DEBUG = 1;
+const DEBUG = true;
 
 // @desc Register new user
 // @route POST /users
