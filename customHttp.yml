@@ -1,0 +1,7 @@
+customHeaders:
+  - pattern: 'assets/*.js'
+    headers:
+      - key: Content-Type
+        value: application/javascript
+      - key: Cache-Control
+        value: max-age=31536000,immutable

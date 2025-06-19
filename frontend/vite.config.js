@@ -6,21 +6,17 @@ export default defineConfig({
   build: {
     outDir: './dist',
     emptyOutDir: true,
+    assetsDir: 'assets',  // Explicit assets directory
     minify: 'terser',
-    sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom'],
-          mui: ['@mui/material']
-        },
-        // Add this to ensure proper chunk naming
+        assetFileNames: 'assets/[name]-[hash][extname]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js'
       }
     }
   },
-  base: '/',  // Must be forward slash
+  base: '/',  // Critical for correct paths
   server: {
     port: 5001
   }
