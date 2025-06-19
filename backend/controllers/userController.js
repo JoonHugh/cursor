@@ -56,13 +56,13 @@ export const registerUser  = asyncHandler(async (req, res) => {
 export const loginUser  = asyncHandler(async (req, res) => {
     const {email, password} = req.body;
 
-    if (DEBUG) console.log("Login request received:", email, password);
+    console.log("Login request received:", email, password);
 
     // Check for user email
     const  user = await User.findOne({email});
 
     if (user && (await bcrypt.compare(password, user.password))) {
-        if (DEBUG) console.log("Login successful:", user.email);
+        console.log("Login successful:", user.email);
         res.json({
             _id: user.id,
             name: user.name,
@@ -72,9 +72,9 @@ export const loginUser  = asyncHandler(async (req, res) => {
             updatedAt: user.updatedAt,
         })
     } else {
-        if (DEBUG) console.log("Login failed for:", email);
-        res.status(400);
-        throw new Error("Invalid credentials");
+        console.log("Login failed for:", email);
+        res.status(400).json({ message: "Invalid Credentials" });
+        // throw new Error("Invalid credentials");
     } // if-else
 
 })
