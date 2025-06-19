@@ -3,11 +3,16 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd frontend && npm ci
+        - echo "Contents of working directory:" && ls -la
+        - echo "Looking for frontend directory..." && ls -la frontend
+        - cd frontend && npm install --force
+        - pwd
+        - ls -la
+        - ls -la frontend
     build:
       commands:
         - cd frontend && npm run build
-        - ls -la dist # Verify build output
+        - ls -la frontend/dist
   artifacts:
     baseDirectory: frontend/dist
     files:
