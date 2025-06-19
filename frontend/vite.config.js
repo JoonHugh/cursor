@@ -17,5 +17,5 @@ export default defineConfig({
       }
     }
   },
-  base: './' // Critical for Amplify asset paths
+  base: '/' // Critical for Amplify asset paths
 })
