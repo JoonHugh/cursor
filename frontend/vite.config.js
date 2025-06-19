@@ -18,6 +18,8 @@ export default defineConfig({
   // Important for Amplify deployment
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    sourcemap: false,  // Recommended for production
+    minify: 'terser'   // Better minification
   }
 })
