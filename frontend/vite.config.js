@@ -8,17 +8,19 @@ export default defineConfig({
     emptyOutDir: true,
     minify: 'terser',
     sourcemap: false,
-    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
           mui: ['@mui/material']
-        }
+        },
+        // Add this to ensure proper chunk naming
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js'
       }
     }
   },
-  base: '/',
+  base: '/',  // Must be forward slash
   server: {
     port: 5001
   }
