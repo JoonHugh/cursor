@@ -58,7 +58,7 @@ function Login() {
     // if (isSuccess || user) {
     if (isSuccess && user?.token) {
       navigate('/')
-    } else {
+    } else if (isSuccess && !user?.token) {
       toast.error("Login failed - Invalid user");
     } // if
 
