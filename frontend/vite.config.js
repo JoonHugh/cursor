@@ -7,7 +7,8 @@ export default defineConfig({
     outDir: './dist',
     emptyOutDir: true,
     minify: 'terser',
-    chunkSizeWarningLimit: 1600,
+    sourcemap: false,
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -17,5 +18,8 @@ export default defineConfig({
       }
     }
   },
-  base: '/' // Critical for Amplify asset paths
+  base: '/',
+  server: {
+    port: 5001
+  }
 })
