@@ -17,6 +17,10 @@
         "lambda": {
           "deploymentBucketName": "amplify-cursor-dev-34b5a-deployment",
           "s3Key": "amplify-builds/lambda-4746586e746665466e38-build.zip"
+        },
+        "blogapi": {
+          "deploymentBucketName": "amplify-cursor-dev-34b5a-deployment",
+          "s3Key": "amplify-builds/blogapi-774a712b4934636b6143-build.zip"
         }
       },
       "auth": {

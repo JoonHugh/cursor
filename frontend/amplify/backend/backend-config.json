@@ -42,6 +42,11 @@
     }
   },
   "function": {
+    "blogapi": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "lambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -49,6 +54,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_blogapi_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "blogapi"
+        }
+      ]
+    },
+    "AMPLIFY_function_blogapi_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "blogapi"
+        }
+      ]
+    },
     "AMPLIFY_function_lambda_deploymentBucketName": {
       "usedBy": [
         {
