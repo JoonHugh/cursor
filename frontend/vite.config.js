@@ -7,15 +7,15 @@ export default defineConfig({
     outDir: './dist',
     emptyOutDir: true,
     minify: 'terser',
-    sourcemap: false
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          mui: ['@mui/material']
+        }
       }
     }
-  }
+  },
+  base: './' // Critical for Amplify asset paths
 })

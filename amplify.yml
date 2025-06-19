@@ -3,10 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd frontend && npm install
+        - cd frontend && npm ci
     build:
       commands:
         - cd frontend && npm run build
+        - ls -la dist # Verify build output
   artifacts:
     baseDirectory: frontend/dist
     files:
